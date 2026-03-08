@@ -1,0 +1,26 @@
+# Build
+target/
+*.jar
+*.war
+*.class
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
