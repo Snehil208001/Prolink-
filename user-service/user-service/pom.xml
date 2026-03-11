@@ -5,13 +5,15 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.4</version>
+		<version>3.5.11</version>
 		<relativePath/> </parent>
-	<groupId>com.codingshuttle.linkedin</groupId>
+	<groupId>com.snehil.prolink</groupId>
 	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user-service</name>
-	<description>User Service in LinkedIn Project</description>
+	<description>
+		User management and authentication microservice for a LinkedIn-style platform built with Spring Boot.
+	</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -27,6 +29,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<spring-cloud.version>2025.0.1</spring-cloud.version>
 		<lombok.version>1.18.38</lombok.version>
 	</properties>
 	<dependencies>
@@ -86,7 +89,24 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
 
 	<build>
 		<plugins>
