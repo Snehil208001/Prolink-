@@ -1,74 +1,139 @@
 # ProLink API Test Results
 
-**Test Date:** 2026-03-11  
-**Direct URLs:** User (9020), Post (9010), Connection via Gateway (8080)
+**Last Updated:** 2026-03-13  
+**Gateway Base URL:** `http://localhost:8080/api/v1`  
+**Test Script:** `.\test-api.ps1`
+
+---
+
+## Quick Summary
+
+| Endpoint | Valid | Validation | Status |
+|----------|-------|------------|--------|
+| Signup | ✅ 201 | ✅ 400 | Pass |
+| Login | ✅ 200 | ✅ 400 | Pass |
+| Create Post | ✅ 201 | ✅ 400 | Pass |
+| Get Profile | ✅ 200 | - | Pass |
+| Get Post | ✅ 200 | - | Pass |
+| Like Post | ✅ 204 | ✅ 400 (duplicate) | Pass |
+| Unlike Post | ✅ 204 | ✅ 400 (double unlike) | Pass |
+| First Degree | ✅ 200 | - | Pass |
+
+*Requires Neo4j on port 7690 with graph data.*
 
 ---
 
 ## 1. User Service - Signup
 
-**Endpoint:** `POST http://localhost:9020/users/auth/signup`  
+**Endpoint:** `POST /api/v1/users/auth/signup`  
 **Required fields:** `name`, `email`, `password`
 
 | Test Case | Request Body | Expected | Actual | Result |
 |-----------|--------------|----------|--------|--------|
-| Valid signup | `{"name":"TestUser","email":"testapi2@mail.com","password":"pass123"}` | 201 | 201 + UserDto | ✅ Pass |
-| Empty body (missing all) | `{}` | 400 | 500 | ❌ Fail - no validation |
+| Valid signup | `{"name":"TestUser","email":"test@mail.com","password":"pass123"}` | 201 | 201 | ✅ Pass |
+| Empty body | `{}` | 400 | 400 | ✅ Pass |
 
 ---
 
 ## 2. User Service - Login
 
-**Endpoint:** `POST http://localhost:9020/users/auth/login`  
+**Endpoint:** `POST /api/v1/users/auth/login`  
 **Required fields:** `email`, `password`
 
 | Test Case | Request Body | Expected | Actual | Result |
 |-----------|--------------|----------|--------|--------|
-| Valid login | `{"email":"testapi2@mail.com","password":"pass123"}` | 200 | 200 + JWT token | ✅ Pass |
-| Empty body | `{}` | 400 | 404 | ⚠️ Returns 404 (null email) |
+| Valid login | `{"email":"test@mail.com","password":"pass123"}` | 200 | 200 | ✅ Pass |
+| Empty body | `{}` | 400 | 400 | ✅ Pass |
 
 ---
 
-## 3. Post Service - Create Post
+## 3. User Service - Get Profile
 
-**Endpoint:** `POST http://localhost:9010/posts/core`  
+**Endpoint:** `GET /api/v1/users/profile`  
+**Auth:** Required (Bearer token). Returns current user's profile from X-User-Id header.
+
+| Test Case | Expected | Result |
+|-----------|----------|--------|
+| With valid JWT | 200 + UserDto | ✅ Pass |
+
+---
+
+## 4. Post Service - Create Post
+
+**Endpoint:** `POST /api/v1/posts/core`  
 **Required fields:** `content`
 
 | Test Case | Request Body | Expected | Actual | Result |
 |-----------|--------------|----------|--------|--------|
-| Valid post | `{"content":"Test post"}` | 201 | 201 + PostDto | ✅ Pass |
-| Empty body (missing content) | `{}` | 400 | 500 | ❌ Fail - no validation |
+| Valid post | `{"content":"Test post"}` | 201 | 201 | ✅ Pass |
+| Empty body | `{}` | 400 | 400 | ✅ Pass |
 
 ---
 
-## 4. Post Service - Get Post
+## 5. Post Service - Get Post
 
-**Endpoint:** `GET http://localhost:9010/posts/core/{postId}`
+**Endpoint:** `GET /api/v1/posts/core/{postId}`
 
 | Test Case | URL | Expected | Actual | Result |
 |-----------|-----|----------|--------|--------|
-| Valid ID | `/posts/core/12` | 200 | 200 + post | ✅ Pass |
+| Valid ID | `/posts/core/1` | 200 | 200 | ✅ Pass |
 
 ---
 
-## 5. Connection Service - First Degree
+## 6. Post Service - Like / Unlike
 
-**Endpoint:** `GET http://localhost:8080/api/v1/connections/core/{userId}/first-degree`
+**Endpoints:**
+- Like: `POST /api/v1/posts/likes/{postId}`
+- Unlike: `DELETE /api/v1/posts/likes/{postId}`
+
+| Test Case | Method | URL | Expected | Actual | Result |
+|-----------|--------|-----|----------|--------|--------|
+| Like post | POST | `/posts/likes/1` | 204 | 204 | ✅ Pass |
+| Unlike post | DELETE | `/posts/likes/1` | 204 | 204 | ✅ Pass |
+| Duplicate like | POST | `/posts/likes/1` (already liked) | 400 | 400 | ✅ Pass |
+| Double unlike | DELETE | `/posts/likes/1` (not liked) | 400 | 400 | ✅ Pass |
+
+---
+
+## 7. Connection Service - First Degree
+
+**Endpoint:** `GET /api/v1/connections/core/{userId}/first-degree`
 
 | Test Case | URL | Expected | Actual | Result |
 |-----------|-----|----------|--------|--------|
-| User with connections | `/api/v1/connections/core/4/first-degree` | 200 | 200 + [User 5, User 6] | ✅ Pass |
+| User with connections | `/connections/core/1/first-degree` | 200 | 200 | ✅ Pass |
+
+**Note:** Requires Neo4j running on port 7690 with Person nodes and CONNECTED_TO relationships.
 
 ---
 
-## Summary
+## Changelog
 
-| Endpoint | Valid Request | Missing Required Fields |
-|----------|---------------|-------------------------|
-| Signup | ✅ 201 | ❌ 500 (should be 400) |
-| Login | ✅ 200 | ⚠️ 404 (null email) |
-| Create Post | ✅ 201 | ❌ 500 (should be 400) |
-| Get Post | ✅ 200 | - |
-| First Degree | ✅ 200 | - |
+| Date | Change |
+|------|--------|
+| 2026-03-13 | Initial comprehensive test results; added Like/Unlike tests |
+| 2026-03-13 | Added validation tests (400 for empty body); fixed Signup, Login, Create Post |
 
-**Required field validation:** Signup and Create Post return **500** instead of **400** when required fields are missing. Add `@Valid` and `@NotBlank`/`@NotNull` to DTOs to return proper 400 Bad Request.
+---
+
+## Run Tests
+
+```powershell
+.\test-api.ps1
+```
+
+**Test credentials:** `snehil123@gmail.com` / `pass`
+
+The script logs in first, gets a JWT, then tests all endpoints with the token in the `Authorization: Bearer <token>` header.
+
+### Postman Setup
+
+1. **Login** – `POST http://localhost:8080/api/v1/users/auth/login`  
+   Body: `{"email":"snehil123@gmail.com","password":"pass"}`  
+   Copy the JWT from the response.
+
+2. **Protected endpoints** – Add header: `Authorization: Bearer <paste_jwt_here>`
+
+   **Get Profile:** `GET http://localhost:8080/api/v1/users/profile`
+
+See [BUG_REPORT.md](BUG_REPORT.md) for known issues and bug tracking.

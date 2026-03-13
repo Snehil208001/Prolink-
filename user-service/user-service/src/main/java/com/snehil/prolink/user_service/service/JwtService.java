@@ -1,5 +1,6 @@
 package com.snehil.prolink.user_service.service;
 
+import com.snehil.prolink.user_service.entity.Role;
 import com.snehil.prolink.user_service.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -24,8 +25,9 @@ public class JwtService {
         return Jwts.builder()
                 .subject(user.getId().toString())
                 .claim("email", user.getEmail())
+                .claim("role", user.getRole().name())
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + 1000*60*10))
+                .expiration(new Date(System.currentTimeMillis() + 1000*60*100))
                 .signWith(getSecretKey())
                 .compact();
     }
@@ -37,5 +39,15 @@ public class JwtService {
                 .parseSignedClaims(token)
                 .getPayload();
         return Long.valueOf(claims.getSubject());
+    }
+
+    public Role getRoleFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        String roleStr = claims.get("role", String.class);
+        return roleStr != null ? Role.valueOf(roleStr) : Role.USER;
     }
 }

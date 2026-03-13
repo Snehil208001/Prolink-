@@ -7,6 +7,7 @@ target/
 # IDE
 .idea/
 *.iml
+.cursor/
 *.ipr
 *.iws
 .vscode/
@@ -20,6 +21,9 @@ pom.xml.tag
 
 # Logs
 *.log
+
+# Test output
+connection-test-results.json
 
 # OS
 .DS_Store

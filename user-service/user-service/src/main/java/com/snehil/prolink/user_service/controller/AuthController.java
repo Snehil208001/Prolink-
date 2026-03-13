@@ -7,6 +7,7 @@ import com.snehil.prolink.user_service.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +21,13 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserDto> signUp(@RequestBody SignupRequestDto signupRequestDto){
+    public ResponseEntity<UserDto> signUp(@Valid @RequestBody SignupRequestDto signupRequestDto){
         UserDto userDto = authService.signUp(signupRequestDto);
         return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequestDto loginRequestDto){
+    public ResponseEntity<String> login(@Valid @RequestBody LoginRequestDto loginRequestDto){
         String token = authService.login(loginRequestDto);
         return  ResponseEntity.ok(token);
     }

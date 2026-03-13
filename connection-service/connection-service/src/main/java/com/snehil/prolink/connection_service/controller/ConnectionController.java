@@ -19,7 +19,7 @@ public class ConnectionController {
     private final ConnectionService connectionService;
 
     @GetMapping("/{userId}/first-degree")
-    public ResponseEntity<List<Person>> getFirstConnections(@PathVariable Long userId) {
-        return ResponseEntity.ok(connectionService.getFirstDegreeConnections(userId));
+    public ResponseEntity<List<Person>> getFirstConnections() {
+        return ResponseEntity.ok(connectionService.getFirstDegreeConnections());
     }
 }
