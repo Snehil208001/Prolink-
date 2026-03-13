@@ -1,0 +1,161 @@
+.onboarding {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg);
+}
+
+.onboarding-logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 40px;
+  height: 40px;
+}
+
+.onboarding-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.onboarding-theme {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s;
+}
+
+.onboarding-theme:hover {
+  background: var(--border);
+}
+
+.onboarding-content {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.onboarding-illustration {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 32px;
+}
+
+.ill-network {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ill-network .n {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+.ill-network .n1 {
+  top: 10%;
+  left: 30%;
+}
+
+.ill-network .n2 {
+  top: 10%;
+  right: 30%;
+}
+
+.ill-network .n3 {
+  bottom: 10%;
+  left: 30%;
+}
+
+.ill-network .n4 {
+  bottom: 10%;
+  right: 30%;
+}
+
+.ill-network .center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+}
+
+.ill-network .lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  stroke: var(--primary);
+  stroke-width: 2;
+  opacity: 0.4;
+}
+
+.ill-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.ill-chat .msg {
+  height: 24px;
+  border-radius: 12px;
+  background: var(--primary-muted);
+}
+
+.ill-chat .msg-1 {
+  width: 70%;
+}
+
+.ill-chat .msg-2 {
+  width: 50%;
+  margin-left: 20px;
+}
+
+.ill-chat .msg-3 {
+  width: 60%;
+}
+
+.ill-opportunities {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ill-opportunities .opp {
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary-muted) 0%, transparent 100%);
+  border: 1px solid var(--border);
+}
+
+.opp-1 {
+  width: 100%;
+}
+
+.opp-2 {
+  width: 85%;
+  margin-left: auto;
+}
+
+.opp-3 {
+  width: 90%;
+}

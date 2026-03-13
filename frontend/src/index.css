@@ -1,0 +1,67 @@
+/* ProLink - LinkedIn/Twitter-inspired design */
+:root {
+  --primary: #0A66C2;
+  --primary-hover: #004182;
+  --primary-light: #E7F3FF;
+  --bg: #F3F2EF;
+  --bg-card: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border: #E0E0E0;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+  --radius: 8px;
+  --radius-lg: 24px;
+}
+
+[data-theme="dark"] {
+  --primary: #70B5F9;
+  --primary-hover: #99CCFF;
+  --primary-light: #192734;
+  --bg: #15202B;
+  --bg-card: #192734;
+  --text-primary: #FFFFFF;
+  --text-secondary: #8899A6;
+  --text-muted: #657786;
+  --border: #38444D;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #F3F2EF;
+  min-height: 100%;
+}
+
+html[data-theme="dark"] {
+  background: #15202B;
+}
+
+body {
+  font-family: 'Source Sans 3', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* Base utility overrides for legacy class names during transition */
+.card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}

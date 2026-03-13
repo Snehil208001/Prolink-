@@ -1,0 +1,128 @@
+.splash {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0A66C2 0%, #004182 50%, #0A66C2 100%);
+  opacity: 0.95;
+}
+
+.splash-nodes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.node-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.node-2 {
+  top: 30%;
+  right: 20%;
+  animation-delay: 0.3s;
+}
+
+.node-3 {
+  bottom: 25%;
+  left: 25%;
+  animation-delay: 0.6s;
+}
+
+.node-4 {
+  bottom: 30%;
+  right: 15%;
+  animation-delay: 0.9s;
+}
+
+.node-5 {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.2s;
+}
+
+.bubble {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+
+.bubble-1 {
+  top: 25%;
+  right: 30%;
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  bottom: 35%;
+  left: 20%;
+  animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.splash-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.splash-logo {
+  margin: 0 auto 20px;
+}

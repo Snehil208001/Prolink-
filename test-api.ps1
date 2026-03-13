@@ -61,6 +61,9 @@ Test-Endpoint -Name "Get Post" -Method GET -Uri "$base/posts/core/1" -ExpectedSt
 # 7. Get All Posts of User
 Test-Endpoint -Name "Get All Posts" -Method GET -Uri "$base/posts/core/users/1/allPosts" -ExpectedStatus 200 -Headers $authHeaders | Out-Null
 
+# 7b. Get Feed
+Test-Endpoint -Name "Get Feed" -Method GET -Uri "$base/posts/core/feed" -ExpectedStatus 200 -Headers $authHeaders | Out-Null
+
 # 8. Like post
 Test-Endpoint -Name "Like post" -Method POST -Uri "$base/posts/likes/1" -ExpectedStatus 204 -Headers $authHeaders | Out-Null
 

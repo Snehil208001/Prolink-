@@ -1,0 +1,144 @@
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+}
+
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-left {
+    display: none;
+  }
+}
+
+.auth-left {
+  background: linear-gradient(135deg, #0A66C2 0%, #004182 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.auth-logo {
+  margin-bottom: 32px;
+}
+
+.auth-illustration {
+  width: 280px;
+  height: 280px;
+  margin-bottom: 48px;
+}
+
+.auth-net {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.auth-net .an {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.auth-net .an1 {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.auth-net .an2 {
+  top: 30%;
+  left: 10%;
+}
+
+.auth-net .an3 {
+  top: 30%;
+  right: 10%;
+}
+
+.auth-net .an4 {
+  bottom: 20%;
+  left: 20%;
+}
+
+.auth-net .an5 {
+  bottom: 20%;
+  right: 20%;
+}
+
+.auth-quote {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  font-weight: 500;
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.auth-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+}
+
+.auth-theme {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+}
+
+.auth-card-logo {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 14px;
+  height: auto !important;
+  font-size: 16px !important;
+}
+
+.auth-forgot {
+  font-size: 14px;
+  color: var(--primary);
+  text-align: center;
+  text-decoration: none;
+}
+
+.auth-forgot:hover {
+  text-decoration: underline;
+}
+
+.auth-divider-text {
+  color: var(--text-secondary) !important;
+  font-size: 14px !important;
+}

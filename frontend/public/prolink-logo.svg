@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <linearGradient id="prolink-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A66C2"/>
+      <stop offset="100%" stop-color="#004182"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="36" fill="url(#prolink-grad)" opacity="0.15"/>
+  <circle cx="40" cy="40" r="28" fill="none" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.4"/>
+  <circle cx="40" cy="40" r="6" fill="url(#prolink-grad)"/>
+  <circle cx="40" cy="18" r="5" fill="url(#prolink-grad)"/>
+  <circle cx="58" cy="32" r="5" fill="url(#prolink-grad)"/>
+  <circle cx="58" cy="48" r="5" fill="url(#prolink-grad)"/>
+  <circle cx="40" cy="62" r="5" fill="url(#prolink-grad)"/>
+  <circle cx="22" cy="48" r="5" fill="url(#prolink-grad)"/>
+  <circle cx="22" cy="32" r="5" fill="url(#prolink-grad)"/>
+  <line x1="40" y1="40" x2="40" y2="24" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="40" y1="40" x2="52" y2="36" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="40" y1="40" x2="52" y2="44" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="40" y1="40" x2="40" y2="56" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="40" y1="40" x2="28" y2="44" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="40" y1="40" x2="28" y2="36" stroke="url(#prolink-grad)" stroke-width="2" opacity="0.8"/>
+</svg>

@@ -1,0 +1,181 @@
+/* LinkedIn-style Profile */
+.profile-page {
+  padding-bottom: 48px;
+}
+
+.profile-cover {
+  height: 200px;
+  background: linear-gradient(135deg, #0A66C2 0%, #004182 100%);
+  border-radius: var(--radius) var(--radius) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.profile-cover-logo {
+  opacity: 0.25;
+}
+
+.profile-header-card {
+  background: var(--bg-card) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-card) !important;
+  border: none !important;
+  padding: 24px !important;
+  margin: -72px 0 0 0 !important;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.profile-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.profile-headline {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+}
+
+.profile-meta {
+  font-size: 14px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.profile-actions .ant-btn-primary {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.profile-actions .ant-btn-default {
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 360px);
+  gap: 32px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .profile-content {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-header-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.profile-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-connect-form .ant-input {
+  border-radius: 4px;
+}
+
+.profile-connect-form .ant-btn {
+  border-radius: 24px;
+  font-weight: 500;
+}
+
+.profile-request-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+
+.profile-request-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.profile-connection-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-connection-item:last-child {
+  border-bottom: none;
+}
+
+.profile-activity-item {
+  padding: 16px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+.profile-activity-item:last-child {
+  margin-bottom: 0;
+}
+
+.profile-activity-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}

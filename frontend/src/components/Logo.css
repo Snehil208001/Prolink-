@@ -1,0 +1,22 @@
+.logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-wrap img {
+  width: var(--logo-size, 40px);
+  height: var(--logo-size, 40px);
+  display: block;
+}
+
+.logo-wrap img.logo-invert {
+  filter: brightness(0) invert(1);
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
