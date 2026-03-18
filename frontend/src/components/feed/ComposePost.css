@@ -1,0 +1,50 @@
+.feed-compose {
+  background: var(--bg-card) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-card) !important;
+  padding: 12px 16px !important;
+  border: none !important;
+}
+
+.feed-compose .compose-inner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.feed-compose .compose-input-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-compose .compose-input-antd {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.feed-compose .compose-input-antd:focus,
+.feed-compose .compose-input-antd:hover {
+  border-color: var(--primary);
+}
+
+.feed-compose .compose-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.feed-compose .compose-btn {
+  color: var(--text-secondary);
+}
+
+.feed-compose .compose-btn.post-btn {
+  margin-left: auto;
+}

@@ -13,7 +13,7 @@
 
 ### 1. Set MongoDB password
 
-Edit `backend/chat-service/chat-service/src/main/resources/application.properties` and replace `YOUR_PASSWORD` with your MongoDB Atlas password.
+Edit `backend/chat-service/src/main/resources/application.properties` and replace `YOUR_PASSWORD` with your MongoDB Atlas password.
 
 Or set the environment variable:
 
@@ -24,14 +24,14 @@ set MONGODB_URI=mongodb+srv://snehil7542:YOUR_PASSWORD@prolink.cngjpxa.mongodb.n
 ### 2. Run chat service
 
 ```bash
-cd backend/chat-service/chat-service
+cd backend/chat-service
 mvn spring-boot:run
 ```
 
 ### 3. Run tests
 
 ```bash
-cd backend/chat-service/chat-service
+cd backend/chat-service
 mvn test
 ```
 

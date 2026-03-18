@@ -14,7 +14,7 @@ The First Degree endpoint requires Neo4j with connection graph data.
 
 ## 3. Configure Port
 
-Edit `backend/connection-service/connection-service/src/main/resources/application.properties`:
+Edit `backend/connection-service/src/main/resources/application.properties`:
 
 ```properties
 # Use 7687 for Neo4j Community, 7690 for Neo4j Desktop

@@ -49,12 +49,12 @@ ProLinkApp/
 Start services in order:
 
 ```bash
-cd backend/discovery-server/discovery-server && mvn spring-boot:run
-cd backend/api-gateway/api-gateway && mvn spring-boot:run
-cd backend/user-service/user-service && mvn spring-boot:run
-cd backend/post-service/post-service && mvn spring-boot:run
-cd backend/connection-service/connection-service && mvn spring-boot:run
-cd backend/chat-service/chat-service && mvn spring-boot:run
+cd backend/discovery-server && mvn spring-boot:run
+cd backend/api-gateway && mvn spring-boot:run
+cd backend/user-service && mvn spring-boot:run
+cd backend/post-service && mvn spring-boot:run
+cd backend/connection-service && mvn spring-boot:run
+cd backend/chat-service && mvn spring-boot:run
 ```
 
 See `backend/README.md` and each service folder for configuration (DB, Neo4j, MongoDB).

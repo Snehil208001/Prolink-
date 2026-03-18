@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.snehil.prolink</groupId>
+    <artifactId>prolink-app</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>ProLink App</name>
+    <description>ProLink - Connect. Collaborate. Converse.</description>
+
+    <modules>
+        <module>backend/discovery-server</module>
+        <module>backend/api-gateway</module>
+        <module>backend/user-service</module>
+        <module>backend/post-service</module>
+        <module>backend/connection-service</module>
+        <module>backend/chat-service</module>
+        <module>backend/notification-service</module>
+    </modules>
+</project>

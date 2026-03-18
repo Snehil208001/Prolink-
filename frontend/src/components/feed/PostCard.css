@@ -1,0 +1,98 @@
+.feed-post {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.feed-post .post-header {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.feed-post .post-header .ant-avatar {
+  flex-shrink: 0;
+}
+
+.feed-post .post-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-post .post-author {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.feed-post .post-time {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.feed-post .post-content {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.feed-post .post-actions {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+
+.feed-post .post-action-btn {
+  flex: 1;
+  color: var(--text-secondary);
+}
+
+.feed-post .post-action-btn.liked {
+  color: var(--primary);
+}
+
+.feed-post .post-comments {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.feed-post .comment-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+
+.feed-post .comment-item .comment-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.feed-post .comment-item .comment-content {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.feed-post .comment-item .comment-time {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.feed-post .comment-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}

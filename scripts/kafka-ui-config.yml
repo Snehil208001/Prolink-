@@ -1,0 +1,6 @@
+# Kafbat UI config - use port 8090 to avoid conflict with API Gateway (8080)
+# Run: java -Dserver.port=8090 -jar kafbat-ui.jar
+# Or: $env:SERVER_PORT="8090"; java -jar kafbat-ui.jar
+
+server:
+  port: 8090

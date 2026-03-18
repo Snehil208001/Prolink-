@@ -25,14 +25,12 @@ export async function getPostsByUser(userId) {
 
 /** POST /posts/likes/{postId} */
 export async function likePost(postId) {
-  const res = await apiRequest(`/posts/likes/${postId}`, { method: 'POST' })
-  if (!res.ok) throw new Error(await res.text())
+  await apiRequest(`/posts/likes/${postId}`, { method: 'POST' })
 }
 
 /** DELETE /posts/likes/{postId} */
 export async function unlikePost(postId) {
-  const res = await apiRequest(`/posts/likes/${postId}`, { method: 'DELETE' })
-  if (!res.ok) throw new Error(await res.text())
+  await apiRequest(`/posts/likes/${postId}`, { method: 'DELETE' })
 }
 
 /** POST /posts/comments/posts/{postId} */

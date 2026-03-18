@@ -8,10 +8,11 @@ Microservices for the ProLink platform.
 |---------|------|-------------|
 | discovery-server | 8761 | Eureka service discovery |
 | api-gateway | 8080 | API Gateway (routes, auth) |
-| user-service | 9010 | Users, auth, profiles |
-| post-service | 9020 | Posts, comments, likes |
+| user-service | 9020 | Users, auth, profiles |
+| post-service | 9010 | Posts, comments, likes |
 | connection-service | 9030 | Connections, Neo4j graph |
 | chat-service | 9040 | Chat, WebSocket, MongoDB |
+| notification-service | 9050 | Notifications, Kafka |
 
 ## Start Order
 
@@ -21,23 +22,32 @@ Microservices for the ProLink platform.
 4. post-service
 5. connection-service
 6. chat-service
+7. notification-service
 
 ## Running Services
 
 From project root:
 
-```bash
-# Discovery
-cd backend/discovery-server/discovery-server && mvn spring-boot:run
-
-# Gateway
-cd backend/api-gateway/api-gateway && mvn spring-boot:run
-
-# User, Post, Connection, Chat (each in separate terminal)
-cd backend/user-service/user-service && mvn spring-boot:run
-cd backend/post-service/post-service && mvn spring-boot:run
-cd backend/connection-service/connection-service && mvn spring-boot:run
-cd backend/chat-service/chat-service && mvn spring-boot:run
+```powershell
+.\scripts\start-all-services.ps1
 ```
 
-See each service's folder for setup (MongoDB for chat, Neo4j for connections).
+Or manually (each in a separate terminal):
+
+```powershell
+cd backend/discovery-server; mvn spring-boot:run
+cd backend/api-gateway; mvn spring-boot:run
+cd backend/user-service; mvn spring-boot:run
+cd backend/post-service; mvn spring-boot:run
+cd backend/connection-service; mvn spring-boot:run
+cd backend/chat-service; mvn spring-boot:run
+cd backend/notification-service; mvn spring-boot:run
+```
+
+## Test All Services
+
+```powershell
+.\scripts\test-services-health.ps1
+```
+
+See `RUN_SERVICES.md` for prerequisites (PostgreSQL, MongoDB, Neo4j, Kafka) and health URLs.

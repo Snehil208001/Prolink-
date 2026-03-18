@@ -16,6 +16,7 @@
 | User | `/users` | Yes (except auth) |
 | Posts | `/posts` | Yes |
 | Connections | `/connections` | Yes |
+| Notifications | `/notifications` | Yes |
 
 ---
 
@@ -263,7 +264,32 @@ GET /api/v1/connections/ping
 
 ---
 
-## 7. Swagger UI (via Gateway)
+## 7. Notifications (auth required)
+
+### Get Notifications
+```
+GET /api/v1/notifications
+Authorization: Bearer <token>
+```
+**Response:** 200 + List<NotificationDto> (id, userId, message, read, createAt)
+
+### Get Unread Count
+```
+GET /api/v1/notifications/unread-count
+Authorization: Bearer <token>
+```
+**Response:** 200 + number (unread count)
+
+### Mark as Read
+```
+PATCH /api/v1/notifications/{id}/read
+Authorization: Bearer <token>
+```
+**Response:** 200 + NotificationDto
+
+---
+
+## 8. Swagger UI (via Gateway)
 
 | Service | URL |
 |---------|-----|

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { getProfile } from '../api/users'
+import { setOnUnauthorized } from '../api/client'
 
 const AuthContext = createContext()
 
@@ -7,6 +8,17 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const token = localStorage.getItem('prolink-token')
+
+  const logout = useCallback(() => {
+    localStorage.removeItem('prolink-token')
+    localStorage.removeItem('prolink-user')
+    setUser(null)
+  }, [])
+
+  useEffect(() => {
+    setOnUnauthorized(logout)
+    return () => setOnUnauthorized(null)
+  }, [logout])
 
   const loadUser = useCallback(async () => {
     const t = localStorage.getItem('prolink-token')
@@ -33,15 +45,6 @@ export function AuthProvider({ children }) {
     else setLoading(false)
   }, [token, loadUser])
 
-  useEffect(() => {
-    const handleUnauth = () => {
-      setUser(null)
-      setLoading(false)
-    }
-    window.addEventListener('prolink-unauthorized', handleUnauth)
-    return () => window.removeEventListener('prolink-unauthorized', handleUnauth)
-  }, [])
-
   const login = (jwt, userData = null) => {
     localStorage.setItem('prolink-token', jwt)
     if (userData) {
@@ -51,11 +54,6 @@ export function AuthProvider({ children }) {
     loadUser()
   }
 
-  const logout = () => {
-    localStorage.removeItem('prolink-token')
-    localStorage.removeItem('prolink-user')
-    setUser(null)
-  }
 
   const isAuthenticated = !!user
 

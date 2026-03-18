@@ -212,14 +212,20 @@ function Profile() {
 
       <div className="profile-content">
         <div>
-          {displayUser?.bio && (
-            <div className="profile-card">
-              <h3 className="profile-card-title">About</h3>
+          <div className="profile-card">
+            <h3 className="profile-card-title">About</h3>
+            {displayUser?.bio ? (
               <p style={{ fontSize: 15, lineHeight: 1.6, margin: 0, color: 'var(--text-primary)', whiteSpace: 'pre-wrap' }}>
                 {displayUser.bio}
               </p>
-            </div>
-          )}
+            ) : (
+              <Text type="secondary" style={{ fontSize: 15, lineHeight: 1.6, display: 'block' }}>
+                {isOwnProfile
+                  ? 'Tell others about yourself. Add a bio to showcase your experience and interests.'
+                  : 'This user hasn\'t added a description yet.'}
+              </Text>
+            )}
+          </div>
 
           <div className="profile-card">
             <h3 className="profile-card-title">Activity</h3>

@@ -6,6 +6,7 @@ import Auth from './pages/Auth'
 import HomeFeed from './pages/HomeFeed'
 import Network from './pages/Network'
 import Chat from './pages/Chat'
+import Notifications from './pages/Notifications'
 import Profile from './pages/Profile'
 import Layout from './components/Layout'
 import { useAuth } from './context/AuthContext'
@@ -44,6 +45,7 @@ function App() {
         <Route path="feed" element={<HomeFeed />} />
         <Route path="network" element={<Network />} />
         <Route path="chat" element={<Chat />} />
+        <Route path="notifications" element={<Notifications />} />
         <Route path="profile/:userId?" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

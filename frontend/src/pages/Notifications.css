@@ -1,0 +1,47 @@
+.notifications-page {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.notifications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.notifications-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+
+.notifications-header h1 .anticon {
+  margin-right: 8px;
+}
+
+.notifications-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}
+
+.notifications-list .ant-list-item {
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.notifications-list .ant-list-item:hover {
+  background: var(--bg-hover, rgba(0, 0, 0, 0.04));
+}
+
+.notification-unread {
+  background: var(--bg-hover, rgba(0, 0, 0, 0.02));
+}
+
+.notification-read {
+  opacity: 0.85;
+}

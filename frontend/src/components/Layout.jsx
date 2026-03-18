@@ -10,6 +10,7 @@ import {
 import { useTheme } from '../context/ThemeContext'
 import { useAuth } from '../context/AuthContext'
 import { useUnread } from '../context/UnreadContext'
+import { useNotifications } from '../context/NotificationContext'
 import Logo from './Logo'
 import MobileNav from './MobileNav'
 import './Layout.css'
@@ -20,11 +21,13 @@ function Layout() {
   const { theme, toggleTheme } = useTheme()
   const { user, loading, logout } = useAuth()
   const { totalUnread } = useUnread()
+  const { unreadCount: notificationUnread } = useNotifications()
   const navigate = useNavigate()
   const location = useLocation()
   const isProfile = location.pathname.startsWith('/profile')
   const isNetwork = location.pathname === '/network'
   const isChat = location.pathname === '/chat'
+  const isNotifications = location.pathname === '/notifications'
 
   if (loading) {
     return (
@@ -89,7 +92,9 @@ function Layout() {
           </div>
 
           <div className="header-actions">
-            <Button type="text" icon={<BellOutlined />} size="large" />
+            <Badge count={notificationUnread} size="small" offset={[-2, 2]}>
+              <Button type="text" icon={<BellOutlined />} size="large" onClick={() => navigate('/notifications')} />
+            </Badge>
             <Badge count={totalUnread} size="small" offset={[-2, 2]}>
               <Button type="text" icon={<MessageOutlined />} size="large" onClick={() => navigate('/chat')} />
             </Badge>
@@ -119,6 +124,12 @@ function Layout() {
               </Badge>
               <span>Messaging</span>
             </NavLink>
+            <NavLink to="/notifications" className={({ isActive }) => isActive ? 'active' : ''}>
+              <Badge count={notificationUnread} size="small" offset={[-2, 2]}>
+                <span className="nav-icon">🔔</span>
+              </Badge>
+              <span>Notifications</span>
+            </NavLink>
             <NavLink to="/profile">
               <span className="nav-icon">👤</span>
               <span>Profile</span>
@@ -126,7 +137,7 @@ function Layout() {
           </nav>
         </aside>
 
-        <Content className={`layout-main ${isProfile || isNetwork || isChat ? 'layout-main-wide' : ''}`}>
+        <Content className={`layout-main ${isProfile || isNetwork || isChat || isNotifications ? 'layout-main-wide' : ''}`}>
           <Outlet />
         </Content>
       </div>

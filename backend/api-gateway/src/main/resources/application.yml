@@ -1,0 +1,145 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns:
+              - "http://localhost:*"
+              - "http://127.0.0.1:*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      routes:
+        # Swagger UI - no auth required (must be before main routes)
+        - id: user-service-swagger-ui
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/swagger-ui/**
+          filters:
+            - StripPrefix=2
+        - id: user-service-swagger-ui-html
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/swagger-ui.html
+          filters:
+            - StripPrefix=2
+        - id: user-service-api-docs
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        - id: post-service-swagger-ui
+          uri: lb://POST-SERVICE
+          predicates:
+            - Path=/api/v1/posts/swagger-ui/**
+          filters:
+            - StripPrefix=2
+        - id: post-service-swagger-ui-html
+          uri: lb://POST-SERVICE
+          predicates:
+            - Path=/api/v1/posts/swagger-ui.html
+          filters:
+            - StripPrefix=2
+        - id: post-service-api-docs
+          uri: lb://POST-SERVICE
+          predicates:
+            - Path=/api/v1/posts/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        - id: connection-service-swagger-ui
+          uri: http://localhost:9030
+          predicates:
+            - Path=/api/v1/connections/swagger-ui/**
+          filters:
+            - StripPrefix=2
+        - id: connection-service-swagger-ui-html
+          uri: http://localhost:9030
+          predicates:
+            - Path=/api/v1/connections/swagger-ui.html
+          filters:
+            - StripPrefix=2
+        - id: connection-service-api-docs
+          uri: http://localhost:9030
+          predicates:
+            - Path=/api/v1/connections/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        - id: user-service-auth
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/auth/**
+          filters:
+            - StripPrefix=2
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: post-service
+          uri: http://localhost:9010
+          predicates:
+            - Path=/api/v1/posts/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: connection-service
+          # Direct URL: avoids lb:// hostname resolution (Eureka may register Snehil.mshome.net).
+          # For multi-instance: use lb://CONNECTION-SERVICE + eureka.instance.prefer-ip-address=true
+          uri: http://localhost:9030
+          predicates:
+            - Path=/api/v1/connections/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: chat-service
+          uri: http://localhost:9040
+          predicates:
+            - Path=/api/v1/chat/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: notification-service
+          uri: http://localhost:9050
+          predicates:
+            - Path=/api/v1/notifications/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  secretKey: 2bjb234jbu23b4j2b4b234jb23j4b32j4bjk32b4jb324jk23bjk4b32jkb432jb423

@@ -27,8 +27,7 @@ export async function rejectConnectionRequest(requestId) {
 
 /** DELETE /connections/remove/{userId} */
 export async function removeConnection(userId) {
-  const res = await apiRequest(`/connections/remove/${userId}`, { method: 'DELETE' })
-  if (!res.ok) throw new Error(await res.text())
+  await apiRequest(`/connections/remove/${userId}`, { method: 'DELETE' })
 }
 
 /** GET /connections/requests/received */

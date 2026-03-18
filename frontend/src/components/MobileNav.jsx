@@ -16,7 +16,7 @@ function MobileNav() {
         <span className="nav-icon">💬</span>
         <span className="nav-label">Chat</span>
       </NavLink>
-      <NavLink to="/feed" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+      <NavLink to="/notifications" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
         <span className="nav-icon">🔔</span>
         <span className="nav-label">Notifications</span>
       </NavLink>
