@@ -25,6 +25,9 @@ pom.xml.tag
 # Test output
 connection-test-results.json
 
+# Environment (secrets)
+.env
+
 # OS
 .DS_Store
 Thumbs.db

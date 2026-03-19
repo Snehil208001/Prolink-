@@ -11,6 +11,7 @@ export const apiClient = axios.create({
   baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
+  timeout: 30000,
 })
 
 // Callback for 401 - set by AuthContext so we stay in React ecosystem
