@@ -5,13 +5,13 @@
 Edit `backend/chat-service/src/main/resources/application.properties` and replace `YOUR_PASSWORD` with your MongoDB Atlas database user password:
 
 ```properties
-spring.data.mongodb.uri=mongodb+srv://snehil7542:YOUR_ACTUAL_PASSWORD@prolink.cngjpxa.mongodb.net/prolink_chat?retryWrites=true&w=majority&appName=ProLink
+spring.data.mongodb.uri=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/prolink_chat?retryWrites=true&w=majority&appName=ProLink
 ```
 
 **Or** set the `MONGODB_URI` environment variable (recommended for production):
 
 ```bash
-export MONGODB_URI="mongodb+srv://snehil7542:YOUR_PASSWORD@prolink.cngjpxa.mongodb.net/prolink_chat?retryWrites=true&w=majority&appName=ProLink"
+export MONGODB_URI="mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/prolink_chat?retryWrites=true&w=majority&appName=ProLink"
 ```
 
 ## 2. Run the chat service

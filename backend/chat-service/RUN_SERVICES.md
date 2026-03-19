@@ -18,7 +18,7 @@ Edit `backend/chat-service/src/main/resources/application.properties` and replac
 Or set the environment variable:
 
 ```bash
-set MONGODB_URI=mongodb+srv://snehil7542:YOUR_PASSWORD@prolink.cngjpxa.mongodb.net/prolink_chat?retryWrites=true&w=majority&appName=ProLink
+set MONGODB_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/prolink_chat?retryWrites=true&w=majority&appName=ProLink
 ```
 
 ### 2. Run chat service

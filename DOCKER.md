@@ -41,7 +41,7 @@ docker compose build
 To use MongoDB Atlas instead of the local container, set:
 
 ```bash
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/prolink_chat
+MONGODB_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/prolink_chat
 ```
 
 in the `chat-service` section of `docker-compose.yml`, or use an env file.
